@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/styles.css" />
+  <title>Huch House Site</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet"> 
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand btn btn-outline-success" href="/">Huch House</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/pages/nas.html">NAS</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Smart Mirror <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pages/pi.html">Raspberry Pi</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pages/rss.html">Huch RSS</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class='page'>
+    <div class='menu'>
+      <h1>At-A-Glance</h1>
+      <p>This page contains only overview information of each of the systems presented. 
+        To see more detailed reports (plus controls) please visit the dedicated page of the given system.</p>
+    </div>
+    <div class='section feature'>
+      <div class="feature-box">
+        <h1><strong>NAS</strong></h1>
+        <ul>
+          <li><strong>Status</strong>: <div class="okay">Online</div></li>
+          <li><strong>SSH</strong>: <div class="okay">Yes</div></li>
+          <li><strong>OS Update</strong>: <div class="okay">2021-2-3</div></li>
+          <li><strong>Last POST</strong>: <div class="okay">2021-2-4</div></li>
+          <li><strong>Local IP</strong>: 192.168.0.300</li>
+        </ul>
+      </div>
+      <div class="feature-box center">
+        <h1>Capacity</h1>
+        <img src="/images/storage.svg"/>
+        <p>647 GB / 1 TB</p>
+      </div>
+    </div>
+    <div class='section feature'>
+      <div class="feature-box">
+        <h1><strong>Smart Mirror</strong></h1>
+        <ul>
+          <li><strong>Status</strong>: <div class="okay">Online</div></li>
+          <li><strong>SSH</strong>: <div class="not-okay">No</div></li>
+          <li><strong>OS Update</strong>: <div class="not-okay">2020-6-16</div></li>
+          <li><strong>Local IP</strong>: 192.168.0.374</li>
+        </ul>
+      </div>
+      <div class="feature-box">
+        <h1><pre> </pre></h1>
+        <ul>
+          <li><strong>Weather Update</strong>: <div class="okay">21:00:01</div></li>
+          <li><strong>Last POST</strong>: <div class="not-okay">2020-6-16</div></li>
+          <li><strong>Calendar Update</strong>: <div class="okay">2021-2-3</div></li>
+          <li><strong>Message</strong>: Gratitude</li>
+        </ul>
+      </div>
+
+    </div>
+    <div class='section feature'>
+      <div class="feature-box">
+        <h1><strong>Raspberry Pi</strong></h1>
+        <ul>
+          <li><strong>Status</strong>: <div class="okay">Online</div></li>
+          <li><strong>SSH</strong>: <div class="okay">Yes</div></li>
+          <li><strong>Update</strong>: <div class="okay">2021-2-3</div></li>
+          <li><strong>Last Refresh</strong>: <div class="okay">21:00:01</div></li>
+          <li><strong>Local IP</strong>: 192.168.0.300</li>
+        </ul>
+      </div>
+      <div class="feature-box center">
+        <h1>Message</h1>
+        <h2 class="quote">"Happiness can be found, even in the darkest of times, if one only remembers to turn on the light."</h2>
+        <h2 class="quote attribution">- Albus Dumbledore</h2>
+      </div>
+    </div>
+    <div class='section feature'>
+      <div class="feature-box">
+        <h1><strong>Huch RSS</strong></h1>
+        <ul>
+          <li><strong>Status</strong>: <div class="okay">Online</div></li>
+          <li><strong>Update</strong>: <div class="okay">09:00:01</div></li>
+          <li><strong>Pending</strong>: <div class="not-okay">25</div></li>
+          <li><strong>Usage</strong>: <div class="okay">2</div></li>
+        </ul>
+      </div>
+      <div class="feature-box center">
+        <h1>Unread</h1>
+        <img src="/images/rss.svg"/>
+        <p>374 stories</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <hr/>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 footer-heading">
+                <h3>Made by Jared Huch</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 offset-md-2 footer-content">
+                <h3><a href=" https://github.com/BYU-CS-260-Winter-2021/lab-1-photography-website-jhuch-cs.git">Github</a></h3>
+            </div>
+        </div>
+    </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js "
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo "
+    crossorigin="anonymous "></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js "
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 "
+    crossorigin="anonymous "></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js "
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy "
+    crossorigin="anonymous "></script>
+</body>
+
+</html>
