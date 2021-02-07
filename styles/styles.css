@@ -75,7 +75,6 @@ strong {
 
 .menu-box {
   display: flex;
-  /* width: 35%; */
   margin: 0 auto;
 }
 
@@ -182,6 +181,18 @@ label {
 
 .light {
   font-weight: 100;
+}
+
+.message {
+  background-color: #313131;
+}
+
+.message .menu-box {
+  flex-direction: column;
+}
+
+.message .attribution {
+  padding-left: 30px;
 }
 
 /* Mobile Styles */
