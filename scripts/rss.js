@@ -19,21 +19,22 @@ function onClick() {
 
     let promiseArray = [];
     promiseArray.push.apply(promiseArray, loadSubredditRSS());
-    // promiseArray.push.apply(promiseArray, loadRedditUserRSS());
-    // promiseArray.push.apply(promiseArray, loadRedditDomainsRSS());
-    // promiseArray.push.apply(promiseArray, loadComicRSS()); 
+    promiseArray.push.apply(promiseArray, loadRedditUserRSS());
+    promiseArray.push.apply(promiseArray, loadRedditDomainsRSS());
+    promiseArray.push.apply(promiseArray, loadComicRSS());
 
     Promise.allSettled(promiseArray)
-    .then( () => {
-        entryObjects.sort( (a, b) => { return (a.pubDate < b.pubDate) - (a.pubDate > b.pubDate); });
-    }).then( () => {
-        spinner.setAttribute('hidden', 'true');
-        writeMoreEntries();
-    });
+        .then(() => {
+            entryObjects.sort((a, b) => { return (a.pubDate < b.pubDate) - (a.pubDate > b.pubDate); });
+        }).then(() => {
+            spinner.setAttribute('hidden', 'true');
+            writeMoreEntries();
+        });
 }
+
 document.getElementById('exec').addEventListener('click', onClick);
 
-window.onscroll = function(ev) {
+window.onscroll = function (ev) {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
         writeMoreEntries();
     }
@@ -45,12 +46,13 @@ function writeMoreEntries() {
     nextIndexToWrite += numToWrite;
 }
 
+
 /*
     Write the entry objects to the HTML page
 */
 function writeEntriesToHTML(entries) {
     if (entries.length == 0) { return; }
-    let html = ""; // base node
+    let html = "";
     for (let entry of entries) {
         switch (entry.type) {
             case 'comic':
@@ -70,6 +72,7 @@ function writeEntriesToHTML(entries) {
     document.getElementById("displayRSS").innerHTML += html
 }
 
+
 /*
     Comic RSS Code
 */
@@ -79,10 +82,10 @@ function loadComicRSS() {
     for (let comic of comicSites) {
         let url = "https://jsonp.afeld.me/?url=" + comic;
         promiseArray.push(fetch(url)
-                            .then(response => response.text())
-                            .then(xml => addComicEntries(xml)))
+            .then(response => response.text())
+            .then(xml => addComicEntries(xml)))
     }
-    
+
     return promiseArray
 }
 
@@ -95,10 +98,10 @@ function addComicEntries(xmlString) {
     for (let entry of entryList) {
         let link = entry.getElementsByTagName("link")[0].childNodes[0].nodeValue;
         let title = entry.getElementsByTagName("title")[0].childNodes[0].nodeValue;
-        let content = entry.getElementsByTagName('description')[0].childNodes[0].nodeValue; 
+        let content = entry.getElementsByTagName('description')[0].childNodes[0].nodeValue;
         let pubDate = entry.getElementsByTagName('pubDate')[0].childNodes[0].nodeValue;
 
-        let comicObject = {'link': link, 'title': title, 'content': content, 'pubDate': new Date(pubDate), 'type': 'comic'};
+        let comicObject = { 'link': link, 'title': title, 'content': content, 'pubDate': new Date(pubDate), 'type': 'comic' };
         entryObjects.push(comicObject);
     }
 }
@@ -112,6 +115,7 @@ function writeComicEntryToHTML(entry) {
     return html;
 }
 
+
 /*
     Domain RSS Code
 */
@@ -122,10 +126,10 @@ function loadRedditDomainsRSS() {
         let url = baseUrl + domain + "/top/.rss";
 
         promiseArray.push(fetch(url)
-                            .then(response => response.text())
-                            .then(xml => addSubredditEntries(xml)))
+            .then(response => response.text())
+            .then(xml => addSubredditEntries(xml)))
     }
-    
+
     return promiseArray;
 }
 
@@ -148,7 +152,7 @@ function addSubredditEntries(xmlString) {
 
         let pubDate = entry.getElementsByTagName('updated')[0].childNodes[0].nodeValue;
 
-        let domainObject = {'link': link, 'author': author, 'authorLink': authorLink, 'title': title, 'content': content, 'pubDate': new Date(pubDate), 'type': 'subreddit'};
+        let domainObject = { 'link': link, 'author': author, 'authorLink': authorLink, 'title': title, 'content': content, 'pubDate': new Date(pubDate), 'type': 'subreddit' };
         entryObjects.push(domainObject);
     }
 }
@@ -175,10 +179,10 @@ function loadRedditUserRSS() {
         let url = baseUrl + user + "/.rss";
 
         promiseArray.push(fetch(url)
-                            .then(response => response.text())
-                            .then(xml => addUserEntries(xml)))
+            .then(response => response.text())
+            .then(xml => addUserEntries(xml)))
     }
-    
+
     return promiseArray;
 }
 
@@ -204,7 +208,7 @@ function addUserEntries(xmlString) {
 
         let pubDate = entry.getElementsByTagName('updated')[0].childNodes[0].nodeValue;
 
-        let userObject = {'link': link, 'image': image, 'author': author, 'authorLink': authorLink, 'title': title, 'content': content,'pubDate': new Date(pubDate), 'type': 'user'};
+        let userObject = { 'link': link, 'image': image, 'author': author, 'authorLink': authorLink, 'title': title, 'content': content, 'pubDate': new Date(pubDate), 'type': 'user' };
         entryObjects.push(userObject);
     }
 }
@@ -233,8 +237,8 @@ function loadSubredditRSS() {
 
 
         promiseArray.push(fetch(url)
-                            .then(response => response.text())
-                            .then(xml => addSubredditEntries(xml)));
+            .then(response => response.text())
+            .then(xml => addSubredditEntries(xml)));
     }
 
     return promiseArray;

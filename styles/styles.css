@@ -218,6 +218,10 @@ label {
   text-align: left;
 }
 
+.entry a {
+  color: rgb(61, 168, 255);
+}
+
 .entry table {
   margin: 0 auto;
 }
