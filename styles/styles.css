@@ -131,6 +131,15 @@ strong {
   justify-content: center;
 }
 
+.extra-center {
+  text-align: center;
+  width: 100%;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
 .center-vert {
   margin: auto auto;
 }
@@ -145,7 +154,7 @@ strong {
   color: white;
 }
 
-.footer h3,
+.footer h4,
 .footer a {
   text-align: center;
 }
@@ -193,6 +202,20 @@ label {
 
 .message .attribution {
   padding-left: 30px;
+}
+
+.entry {
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 5px;
+  border: 0.5px solid #545454;
+  background-color:#202020;
+  text-align: center;
+}
+
+.md {
+  padding: 0 20px;
+  text-align: left;
 }
 
 /* Mobile Styles */
