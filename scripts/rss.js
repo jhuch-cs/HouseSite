@@ -1,5 +1,5 @@
 // GET /r/*/top/.rss
-let defaultSubreddits = ["Amd", "AskScience", "aww", "battlestations", "BrandonSanderson", "coding", "Cosmere", "DIY", "electronics", "EmuDev", "Pokemon", "HermitCraft", "HermitChat", "HomeLab", "Intel", "Java", "LearnSpanish", "LinusTechTips", "linux", "lotr", "Minecraft", "Mistborn", "nvidia", "pokemongo", "PrequelMemes", "programming", "raspberry_pi", "skyrim", "Spanish", "Stormlight_Archive"];
+let defaultSubreddits = ["Amd", "AskScience", "aww", "battlestations", "BrandonSanderson", "electronics", "Pokemon", "HermitCraft", "HermitChat", "HomeLab", "LinusTechTips", "lotr", "Minecraft", "pokemongo", "PrequelMemes", "raspberry_pi", "skyrim", "Spanish", "Stormlight_Archive"];
 // GET /user/*/.rss
 let defaultRedditUsers = ["mistborn", "quippedtheraven"];
 // GET /domain/*/top/.rss
@@ -19,9 +19,9 @@ function onClick() {
 
     let promiseArray = [];
     promiseArray.push.apply(promiseArray, loadSubredditRSS());
-    promiseArray.push.apply(promiseArray, loadRedditUserRSS());
-    promiseArray.push.apply(promiseArray, loadRedditDomainsRSS());
-    promiseArray.push.apply(promiseArray, loadComicRSS()); 
+    // promiseArray.push.apply(promiseArray, loadRedditUserRSS());
+    // promiseArray.push.apply(promiseArray, loadRedditDomainsRSS());
+    // promiseArray.push.apply(promiseArray, loadComicRSS()); 
 
     Promise.allSettled(promiseArray)
     .then( () => {
@@ -138,18 +138,17 @@ function addSubredditEntries(xmlString) {
     for (let entry of entryList) {
         let link = entry.getElementsByTagName("link")[0].getAttribute('href');
 
-        let image = entry.getElementsByTagName('media:thumbnail');
-        image = image.length > 0 ? image[0].getAttribute('url') : "";
-
         let title = entry.getElementsByTagName("title")[0].childNodes[0].nodeValue;
 
         let author = entry.getElementsByTagName('author');
         author = author.length > 0 ? author[0].getElementsByTagName('name')[0].firstChild.nodeValue : "/u/[deleted]";
         let authorLink = "https://www.reddit.com" + author;
 
+        let content = entry.getElementsByTagName('content')[0].childNodes[0].nodeValue;
+
         let pubDate = entry.getElementsByTagName('updated')[0].childNodes[0].nodeValue;
 
-        let domainObject = {'link': link, 'image': image, 'author': author, 'authorLink': authorLink, 'title': title, 'pubDate': new Date(pubDate), 'type': 'subreddit'};
+        let domainObject = {'link': link, 'author': author, 'authorLink': authorLink, 'title': title, 'content': content, 'pubDate': new Date(pubDate), 'type': 'subreddit'};
         entryObjects.push(domainObject);
     }
 }
@@ -159,9 +158,9 @@ function writeSubredditEntryToHTML(entry) {
     let title = entry.title;
     let authorLink = entry.authorLink
     let author = entry.author;
-    let image = entry.image;
+    let content = entry.content;
 
-    let html = `<div class='entry'><a href='${link}'><h2>${title}</h2></a><h4><a href='${authorLink}'>${author}</a></h4><img src='${image}'/></div>`;
+    let html = `<div class='entry'><a href='${link}'><h2>${title}</h2></a>${content}</div>`;
     return html;
 }
 

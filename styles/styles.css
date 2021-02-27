@@ -218,6 +218,19 @@ label {
   text-align: left;
 }
 
+.entry table {
+  margin: 0 auto;
+}
+
+.entry table tr {
+  display: flex;
+  flex-direction: column;
+}
+
+.entry table td {
+  margin: 5px 0;
+}
+
 /* Mobile Styles */
 @media only screen and (max-width: 600px) {
   .feature {
