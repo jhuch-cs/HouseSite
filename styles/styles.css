@@ -213,6 +213,10 @@ label {
   text-align: center;
 }
 
+.entry img {
+  max-width: 75%;
+}
+
 .md {
   padding: 0 20px;
   text-align: left;
