@@ -251,6 +251,12 @@ label {
   .feature {
     height: 350px;
   }
+  .entry {
+    padding: 5px;
+  }
+  .md {
+    padding: 0 10px;
+  }
 }
 
 /* Tablet Styles */
